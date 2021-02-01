@@ -6,7 +6,7 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitleAlt: `StanzionTech - MicroDevBlog`,
   },
   plugins: [
     {
@@ -26,14 +26,44 @@ module.exports = {
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            url: `https://twitter.com/smilzao`,
           },
           {
             name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            url: `https://www.instagram.com/smilzao/`,
           },
         ],
       },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        // In your gatsby-transformer-remark plugin array
+        plugins: [{
+          resolve: 'gatsby-remark-emojis',
+          options: {
+            // Deactivate the plugin globally (default: true)
+            active : true,
+            // Add a custom css class
+            class  : 'emoji-icon',
+            // In order to avoid pattern mismatch you can specify
+            // an escape character which will be prepended to the
+            // actual pattern (e.g. `#:poop:`).
+            escapeCharacter : '#', // (default: '')
+            // Select the size (available size: 16, 24, 32, 64)
+            size   : 64,
+            // Add custom styles
+            styles : {
+              display      : 'inline',
+              margin       : '0',
+              'margin-top' : '1px',
+              position     : 'relative',
+              top          : '5px',
+              width        : '25px'
+            }
+          }
+        }]
+      }
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -45,9 +75,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `StanzionTech - MicroDevBlog`,
+        short_name: `stanzinotech`,
+        description: `Blog personale di un sistemista appassionato di Sviluppo e tecnologia con forti tinte fantasy e nerd.`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,
@@ -67,6 +97,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+
     `gatsby-plugin-netlify`,
     shouldAnalyseBundle && {
       resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
